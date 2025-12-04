@@ -25,16 +25,22 @@ $(TARGET): $(MAIN_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 
 # Test binary objects (explicit to avoid linking main.c)
-TEST_OBJS := $(BUILD_DIR)/test.o $(BUILD_DIR)/util.o $(BUILD_DIR)/InOrder_test.o $(BUILD_DIR)/InOrderThreadBinTree.o
+TEST_OBJS := $(BUILD_DIR)/test.o \
+			$(BUILD_DIR)/util.o \
+			$(BUILD_DIR)/InOrder_test.o \
+			$(BUILD_DIR)/InOrderThreadBinTree.o \
+			$(BUILD_DIR)/MST_test.o \
+			$(BUILD_DIR)/MST.o \
 
 $(TEST_BIN): $(TEST_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 
 # Build-and-run tests
 .PHONY: test test-bin
+## Run tests. Pass TEST=<name> to run a single test, e.g. `make test TEST=InOrder`.
 test: $(BUILD_DIR) $(TEST_BIN)
-	@echo "Running tests..."
-	@$(TEST_BIN) all
+	@echo "Running tests... ($(if $(TEST),$(TEST),all))"
+	@$(TEST_BIN) $(if $(TEST),$(TEST),all)
 
 test-bin: $(BUILD_DIR) $(TEST_BIN)
 	@echo "Built test binary: $(TEST_BIN)"

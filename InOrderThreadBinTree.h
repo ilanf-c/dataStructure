@@ -1,8 +1,7 @@
 #ifndef _IN_ORDER_H
 #define _IN_ORDER_H
 #include "util.h"
-
-#include <stdio.h>
+#include "global.h"
 
 void InOrderVisit(ThreadNode *node, ThreadNode **pre);
 
