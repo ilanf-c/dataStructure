@@ -31,6 +31,8 @@ TEST_OBJS := $(BUILD_DIR)/test.o \
 			$(BUILD_DIR)/InOrderThreadBinTree.o \
 			$(BUILD_DIR)/MST_test.o \
 			$(BUILD_DIR)/MST.o \
+			$(BUILD_DIR)/Short_path_test.o \
+			$(BUILD_DIR)/Short_path.o
 
 $(TEST_BIN): $(TEST_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
