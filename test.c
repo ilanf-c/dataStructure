@@ -2,18 +2,20 @@
 #include <string.h>
 #include <stdio.h>
 
-#define MAX_TEST 4
+#define MAX_TEST 5
 /* Forward declarations for tests defined elsewhere */
 int testInOrder();
 int testMST();
 int testShortPath();
 int testTopo();
+int testInsertSort();
 
 typedef enum{
   IN_ORDER_THREAD,
   MST,
   SHORT_PATH,
   TOPOLOGICAL_SORT,
+  INSERT_SORT,
 } TEST_NAME;
 
 static struct {
@@ -24,6 +26,7 @@ static struct {
   {"MST", MST},
   {"ShortPath", SHORT_PATH},
   {"TOPO", TOPOLOGICAL_SORT},
+  {"InsertSort", INSERT_SORT},
 };
 
 TEST_NAME lookup(const char *name){
@@ -41,6 +44,7 @@ int run_test(const char *name) {
     testMST();
     testShortPath();
     testTopo();
+    testInsertSort();
     return 0;
   }
   switch (lookup(name)) {
@@ -48,6 +52,7 @@ int run_test(const char *name) {
     case MST: return testMST();
     case SHORT_PATH: return testShortPath();
     case TOPOLOGICAL_SORT: return testTopo();
+    case INSERT_SORT: return testInsertSort();
     default: break;
   }
   fprintf(stderr, "Unknown test '%s'\n", name);
