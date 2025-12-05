@@ -32,7 +32,9 @@ TEST_OBJS := $(BUILD_DIR)/test.o \
 			$(BUILD_DIR)/MST_test.o \
 			$(BUILD_DIR)/MST.o \
 			$(BUILD_DIR)/Short_path_test.o \
-			$(BUILD_DIR)/Short_path.o
+			$(BUILD_DIR)/Short_path.o \
+			$(BUILD_DIR)/Topological_sort_test.o \
+			$(BUILD_DIR)/Topological_sort.o \
 
 $(TEST_BIN): $(TEST_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
